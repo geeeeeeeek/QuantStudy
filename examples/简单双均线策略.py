@@ -1,18 +1,19 @@
 import pandas as pd
 import talib as ta
-import numpy as np
 import zipline
 from zipline.api import symbol, record, order_target_percent, schedule_function
 from zipline.utils.events import date_rules, time_rules
 
 """
 简单双均线策略
+策略逻辑是在金叉时候买进，死叉时候卖出
+所谓金叉死叉是两条均线的交叉，当短期均线上穿长期均线为金叉，反之为死叉。
 """
 
 
 def initialize(context):
     print("init")
-    context.asset = symbol('IBM')
+    context.asset = symbol('AAPL')
     context.bar_window = 20
     schedule_function(rebalance, date_rules.every_day(), time_rules.market_open())
 
@@ -31,7 +32,7 @@ def rebalance(context, data):
     print("持仓数==>%d" % current_position)
 
     short_value = ta.SMA(close, timeperiod=5)
-    long_value = ta.SMA(close, timeperiod=10)
+    long_value = ta.SMA(close, timeperiod=15)
 
     buy_signal_triggered = False
     sell_signal_triggered = False
@@ -42,18 +43,18 @@ def rebalance(context, data):
         sell_signal_triggered = True
 
     if buy_signal_triggered and current_position == 0:
-        print(str(date) + '==>Buy')
+        print(str(date) + '==>买入信号')
         order_target_percent(context.asset, 1.0)
 
     elif sell_signal_triggered and current_position > 0:
-        print(str(date) + '==>Sell')
+        print(str(date) + '==>卖出信号')
         order_target_percent(context.asset, 0.0)
     else:
-        print("No trading")
+        print(str(date) + '==>无交易信号')
 
 
 if __name__ == '__main__':
-    start_session = pd.to_datetime('2013-01-01', utc=True)
+    start_session = pd.to_datetime('2013-05-01', utc=True)
     end_session = pd.to_datetime('2014-05-01', utc=True)
     bundle_name = "custom-csv-bundle"
     capital = 10000
