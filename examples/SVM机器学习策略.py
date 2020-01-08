@@ -7,7 +7,15 @@ from zipline.api import symbol, order_target_value, order_target_percent, record
 from zipline.data import bundles
 from zipline.data.data_portal import DataPortal
 from zipline.utils.events import date_rules, time_rules
+import warnings
+warnings.filterwarnings("ignore")
 
+"""
+基于SVM的机器学习策略
+"""
+
+
+# 全局参数
 train_start_day = '2012-4-10'
 train_end_day = '2012-12-10'
 calendar_name = "NYSE"
@@ -16,7 +24,7 @@ train_symbol_str = "IBM"
 
 def get_window_price(end_date):
     bundle_name = "custom-csv-bundle"
-    window = 60  # 窗口大小
+    window = 30  # 窗口大小
 
     bundle_data = bundles.load(bundle_name)
     data_por = DataPortal(bundle_data.asset_finder,
@@ -34,12 +42,12 @@ def get_window_price(end_date):
                                        data_frequency='daily',
                                        field="close")
 
-    close = data[0].values
+    close = data.iloc[:, 0].values
     return close
 
 
 def initialize(context):
-    # set_benchmark(symbol('SPY'))
+
     context.asset = symbol('IBM')
     SVM_train(context)
 
@@ -59,7 +67,7 @@ def SVM_train(context):
 
     for day in days:
         close = get_window_price(day)
-        # 通过三十天收盘价计算指标
+        # 计算指标
         sma_data = talib.SMA(close)[-1]
         wma_data = talib.WMA(close)[-1]
         mom_data = talib.MOM(close)[-1]
@@ -83,6 +91,9 @@ def SVM_train(context):
 def rebalance(context, data):
     history = data.history(context.asset, ['close'], 40, '1d')
     close = history['close'].values
+    date = history.index.values[-1]
+    current_position = context.portfolio.positions[context.asset].amount
+    print("当前持仓==>%d" % current_position)
     price = data[context.asset].price
     record(price=price)
 
@@ -100,21 +111,19 @@ def rebalance(context, data):
     x.append(features)
     flag = context.svm_module.predict(x)  # 预测的涨跌结果
 
-    current_position = context.portfolio.positions[context.asset].amount
-
     if bool(flag) and current_position == 0:
         order_target_percent(context.asset, 0.5)
-        print("操作==>买入   当前股价==>%f" % data[context.asset].price)
+        print(str(date) + "==>买入信号")
     elif bool(flag) is False and current_position > 0:
         order_target_percent(context.asset, 0.0)
-        print("操作==>卖出   当前股价==>%f" % data[context.asset].price)
+        print(str(date) + "==>卖出信号")
     else:
-        print("无操作")
+        print(str(date) + "==>无交易信号")
 
 
 if __name__ == '__main__':
-    start_session = pd.to_datetime('2012-05-01', utc=True)
-    end_session = pd.to_datetime('2013-10-01', utc=True)
+    start_session = pd.to_datetime('2014-01-01', utc=True)
+    end_session = pd.to_datetime('2014-10-01', utc=True)
     bundle_name = "custom-csv-bundle"
     capital = 10000
 
