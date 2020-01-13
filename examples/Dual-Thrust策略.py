@@ -8,6 +8,9 @@ from zipline.utils.events import date_rules, time_rules
 """
 Dual-Thrust策略
 Dual Thrust是一个趋势跟踪系统
+Range = Max(HH-LC, HC-LL)
+上轨 = 开盘价 + K1 * range
+下轨 = 开盘价 - k2 * range
 """
 
 
@@ -17,9 +20,8 @@ def initialize(context):
 
     # 历史窗口大小
     context.window_size = 10
-    # 用户自定义的变量，可以被handle_data使用，触发多头的range
-    context.K1 = 0.5
     # 用户自定义的变量，可以被handle_data使用，触发空头的range.当K1<K2时，多头相对容易被触发,当K1>K2时，空头相对容易被触发
+    context.K1 = 0.5
     context.K2 = 0.3
     # 止损线
     context.portfolio_stop_loss = 0.95

@@ -12,6 +12,10 @@ warnings.filterwarnings("ignore")
 
 """
 基于SVM的机器学习策略
+步骤：
+1.数据采集
+2.训练
+3.预测
 """
 
 
