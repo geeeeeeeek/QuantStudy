@@ -1,7 +1,7 @@
 import backtrader as bt
 import datetime
 
-
+# 均线策略
 class MaCrossStrategy(bt.Strategy):
     params = (
         ('fast_period', 10),

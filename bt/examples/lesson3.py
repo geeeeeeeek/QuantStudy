@@ -9,7 +9,7 @@ import sys  # To find out the script name (in argv[0])
 import backtrader as bt
 
 
-# Create a Stratey
+# 测试策略
 class TestStrategy(bt.Strategy):
 
     params = (
