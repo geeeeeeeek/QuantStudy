@@ -1078,12 +1078,12 @@
         document.getElementById('container'),
         {
           layout: {
-            background: { color: "#fff" },
-            textColor: "#DDD",
+            background: { color: "#222" },
+            textColor: "#444",
           },
           grid: {
-            vertLines: { color: "#ddd" },
-            horzLines: { color: "#ddd" },
+            vertLines: { color: "#333" },
+            horzLines: { color: "#333" },
           },
         }
       );
@@ -1094,9 +1094,9 @@
       });
 
       // x轴颜色
-      chart.timeScale().applyOptions({
-        borderColor: "#71649C",
-      });
+      // chart.timeScale().applyOptions({
+      //   borderColor: "#71649C",
+      // });
 
       const candleStickData = generateCandlestickData();
 
@@ -1104,13 +1104,13 @@
       mainSeries.setData(candleStickData);
 
       // 颜色
-<!--      mainSeries.applyOptions({-->
-<!--            wickUpColor: 'rgb(54, 116, 217)',-->
-<!--            upColor: 'rgb(54, 116, 217)',-->
-<!--            wickDownColor: 'rgb(225, 50, 85)',-->
-<!--            downColor: 'rgb(225, 50, 85)',-->
-<!--            borderVisible: false,-->
-<!--        });-->
+       mainSeries.applyOptions({
+             wickUpColor: 'rgb(54, 116, 217)',
+             upColor: 'rgb(54, 116, 217)',
+             wickDownColor: 'rgb(225, 50, 85)',
+             downColor: 'rgb(225, 50, 85)',
+             borderVisible: false,
+         });
 
 
       window.addEventListener("resize", () => {
