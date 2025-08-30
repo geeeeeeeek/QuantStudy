@@ -26,7 +26,8 @@ def get_client_config():
     client_config = TigerOpenClientConfig()
     client_config.private_key = read_private_key('E:\\software\\rsa_key')
     client_config.tiger_id = '20150279'
-    client_config.account = '20190425155943480'
+    # client_config.account = '20190425155943480'
+    client_config.account = '741857'
     client_config.language = Language.zh_CN
     return client_config
 
