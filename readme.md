@@ -10,3 +10,20 @@
 
 ## 视频讲解
 
+[10分钟教你学习Pandas基础知识](https://youtu.be/hDSzIhcxKGo?si=gxkMaNTsBb3DVhFq)
+
+[10分钟教你学习Numpy基础知识](https://youtu.be/tKpVJQpiDbo?si=gFECDlpEXC0XaSrD)
+
+[使用python联动老虎证券api实现美股实盘交易](https://youtu.be/aRzwrZ_c7bc?si=eCLbyf8iQPt7zFyc)
+
+[python爬取股票行情数据保存本地csv](https://youtu.be/j42y_--BWWg?si=cGYo0DkJjSHWWOu7)
+
+[为了炒股方便我决定自己绘制K线图](https://youtu.be/8c-cUbAyypM?si=Sd4PToZOe2S4n2tp)
+
+[使用akshare获取股票行情数据](https://youtu.be/ORsbob4m0rM?si=qLBAr24JMIxuAKiQ)
+
+[量化回测框架backtrader的入门使用](https://youtu.be/WVRswUZYJDc?si=Zvti-267EP4lIqjq)
+
+[收益稳定的海龟交易策略python编程实现](https://youtu.be/VCYQoZCVG5s?si=uwfpZjiyU_Vij4Ux)
+
+
