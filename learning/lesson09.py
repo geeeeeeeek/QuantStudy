@@ -11,7 +11,7 @@ token = os.getenv('TUSHARE_TOKEN')
 ts.set_token(token)
 pro = ts.pro_api()
 
-stock_list = ['000001.SZ', '300033.SZ', '300454.SZ', ]
+stock_list = ['000001.SZ', '300033.SZ', '000988.SZ', ]
 
 
 # 监听股票行情交易信号并自动发邮件提醒
@@ -43,10 +43,10 @@ def monitor_stocks():
 
 
 # 每天固定时间
-schedule.every().day.at("10:00").do(monitor_stocks)
+# schedule.every().day.at("10:00").do(monitor_stocks)
 
 # 或 每隔10秒
-# schedule.every(10).seconds.do(monitor_stocks)
+schedule.every(10).seconds.do(monitor_stocks)
 
 print("定时监控启动！")
 while True:

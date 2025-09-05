@@ -41,7 +41,7 @@ class RSI_Strategy(bt.Strategy):
 
 if __name__ == '__main__':
     cerebro = bt.Cerebro()
-    data = bt.feeds.GenericCSVData(dataname='../csv/000001.csv',
+    data = bt.feeds.GenericCSVData(dataname='../csv/test2.csv',
                                    dtformat='%Y-%m-%d',
                                    timeframe=bt.TimeFrame.Days)
     cerebro.adddata(data)
