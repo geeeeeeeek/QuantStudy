@@ -14,6 +14,8 @@
 
 [10分钟教你学习Numpy基础知识](https://youtu.be/tKpVJQpiDbo?si=gFECDlpEXC0XaSrD)
 
+[Python绘图神器Matplotlib基础讲解](https://youtu.be/wFzD-ICJGKQ?si=WbGGo_Zd32GQabzV)
+
 [使用python联动老虎证券api实现美股实盘交易](https://youtu.be/aRzwrZ_c7bc?si=eCLbyf8iQPt7zFyc)
 
 [python爬取股票行情数据保存本地csv](https://youtu.be/j42y_--BWWg?si=cGYo0DkJjSHWWOu7)
