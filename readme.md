@@ -30,4 +30,5 @@
 
 [使用Python实现股票交易信号自动监听并发邮件提醒](https://www.youtube.com/watch?v=iJvENM8znN8)
 
+[使用Python获取美股K线行情数据并保存csv](https://youtu.be/VRG-iwkq7f4)
 
