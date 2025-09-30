@@ -28,4 +28,6 @@
 
 [收益稳定的海龟交易策略python编程实现](https://youtu.be/VCYQoZCVG5s?si=uwfpZjiyU_Vij4Ux)
 
+[使用Python实现股票交易信号自动监听并发邮件提醒](https://www.youtube.com/watch?v=iJvENM8znN8)
+
 
