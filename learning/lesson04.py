@@ -27,8 +27,7 @@ quote_client = QuoteClient(client_config)
 bars = quote_client.get_bars(['AAPL'],
                              period=BarPeriod.DAY,
                              limit=1000,
-                             begin_time='2023-06-05 00:30:00',
-                             end_time='2025-08-25 23:31:00'
+                             begin_time='2025-06-05 00:30:00',
                              )
 
 print(bars.head())
